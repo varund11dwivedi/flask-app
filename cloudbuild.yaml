@@ -1,4 +1,4 @@
-Steps : 
+steps : 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest', '.' ]
 
