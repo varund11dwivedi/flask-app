@@ -6,7 +6,7 @@ Steps :
   args: [ 'push', 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest' ]
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'gcloud'
+  entrypoint: gcloud
   args:
   - 'run'
   - 'deploy'
@@ -15,7 +15,5 @@ Steps :
   - 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest'
   - '--region'
   - 'asia-south2'
-  - '--platform'
-  - 'managed'
   - '--allow-unauthenticated'
 
