@@ -1,0 +1,21 @@
+Steps : 
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest' ]
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'pyflaskapp'
+  - '--image'
+  - 'asia-south2-docker.pkg.dev/gcp-cicd-demo/pyappreo-artifact/pyappimage:latest'
+  - '--region'
+  - 'asia-south2'
+  - '--platform'
+  - 'managed'
+  - '--allow-unauthenticated'
+
